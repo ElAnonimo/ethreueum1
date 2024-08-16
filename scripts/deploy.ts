@@ -1,5 +1,5 @@
-import { Signer, ContractTransactionResponse } from 'ethers';
 import { ethers } from 'hardhat';
+import { Signer, ContractTransactionResponse } from 'ethers';
 import { Inbox } from '../typechain-types';
 import { NonPayableOverrides } from '../typechain-types/common';
 
@@ -7,6 +7,7 @@ import { NonPayableOverrides } from '../typechain-types/common';
 const deployContract = async (initialMessage: string, signer: Signer, maxFeePerGas: NonPayableOverrides['maxFeePerGas']) => {
   const Inbox = await ethers.getContractFactory('Inbox', signer);
   const inbox = await Inbox.deploy(initialMessage, { maxFeePerGas });
+  await inbox.waitForDeployment();
   return inbox;
 };
 

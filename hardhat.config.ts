@@ -1,6 +1,5 @@
 import { HardhatUserConfig } from 'hardhat/config';
 import '@nomicfoundation/hardhat-toolbox';
-import '@nomicfoundation/hardhat-ethers';
 import 'dotenv/config';
 
 const config: HardhatUserConfig = {
@@ -16,7 +15,7 @@ const config: HardhatUserConfig = {
     }
   },
   mocha: {
-    timeout: 5000
+    timeout: 20 * 1000
   }
 };
 
